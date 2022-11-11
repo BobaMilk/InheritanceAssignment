@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Appointment {
+class Appointment { //Base class appointment
 protected:
     string desc;
     int month;
@@ -54,7 +54,7 @@ public:
     }
 };
 
-class Doctor : public Appointment {
+class Doctor : public Appointment { //Derived class Doctor
 private:
     bool urgentCare = false;
     bool checkUp = false;
@@ -76,7 +76,7 @@ public:
     }
 };
 
-class Dentist : public Appointment {
+class Dentist : public Appointment { //Derived class Dentist
 private:
     bool cleanUp = false;
     bool toothRemoval = false;
@@ -98,7 +98,7 @@ public:
     }
 };
 
-class Therapy : public Appointment {
+class Therapy : public Appointment { //Derived class Therapy
 private:
     bool behavioral = false;
     bool anxiety = false;
@@ -120,7 +120,7 @@ public:
     }
 };
 
-class HairSalon : public Appointment {
+class HairSalon : public Appointment { //Derived class HairSalon
 private:
     bool hairDye = false;
     bool hairCut = false;
@@ -147,7 +147,7 @@ int main()
     int month, day, year, j = 1;
     vector<Appointment*> Appointments;
 
-    HairSalon* app1 = new HairSalon;
+    HairSalon* app1 = new HairSalon; //Setting up a test for HairSalon
     app1->setDecs("Hair Salon appointment.\n");
     app1->choice('p');
     app1->setMonth(3);
@@ -157,7 +157,7 @@ int main()
     Appointments.push_back(app1);
     app1->printReceipt();
 
-    Doctor* app2 = new Doctor;
+    Doctor* app2 = new Doctor; //Setting up a test for Doctor
     app2->setDecs("Doctor appointment.\n");
     app2->choice('s');
     app2->setMonth(3);
@@ -167,7 +167,7 @@ int main()
     Appointments.push_back(app2);
     app2->printReceipt();
 
-    Dentist* app3 = new Dentist;
+    Dentist* app3 = new Dentist; //Setting up a test for Dentist
     app3->setDecs("Dentist appointment.\n");
     app3->choice('b');
     app3->setMonth(2);
@@ -177,7 +177,7 @@ int main()
     Appointments.push_back(app3);
     app3->printReceipt();
 
-    Therapy* app4 = new Therapy;
+    Therapy* app4 = new Therapy; //Setting up a test for Therapy
     app4->setDecs("Therapy appointment.\n");
     app4->choice('d');
     app4->setMonth(2);
@@ -187,7 +187,7 @@ int main()
     Appointments.push_back(app4);
     app4->printReceipt();
 
-    cout << "Please enter a month. EX: 2\n";
+    cout << "Please enter a month. EX: 2\n"; //Prints out the appointments on that date
     cin >> month;
     cout << "Please enter a day. EX: 17\n";
     cin >> day;
@@ -196,9 +196,9 @@ int main()
     cout << "\nPrinting out all the appointments on that date...\n\n";
 
     for (int i = 0; i < Appointments.size(); i++) {
-        if (Appointments.at(i)->getMonth() == month) {
-            if (Appointments.at(i)->getDay() == day) {
-                if (Appointments.at(i)->getYear() == year) {
+        if (Appointments.at(i)->getMonth() == month) { //if the month matches
+            if (Appointments.at(i)->getDay() == day) { //if the day matches
+                if (Appointments.at(i)->getYear() == year) { //if the year matches
                     cout << "Appointment #" << j << "\n" << Appointments.at(i)->getDecs();
                     cout << Appointments.at(i)->getMonth() << "/" << Appointments.at(i)->getDay() << "/" << Appointments.at(i)->getYear() << endl;
                     Appointments.at(i)->printReceipt();
